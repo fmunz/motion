@@ -1,5 +1,6 @@
 # Databricks notebook source
-
+# MAGIC %md
+# MAGIC ![Name of the image](https://raw.githubusercontent.com/fmunz/motion/master/img/data_analytics.png)
 
 # COMMAND ----------
 
@@ -42,6 +43,17 @@ pt_res = pt.groupby('device').resample('10S').agg({
 # Reset the index of the DataFrame
 pt_res.reset_index(drop=True, inplace=True) 
 
+
+
+# COMMAND ----------
+
+print(f"Size rebinned: {pt.shape} vs size before: {p.shape}") 
+print(f"last timestamp found: {pt['time'].max()})")
+
+# COMMAND ----------
+
+pt
+
 # COMMAND ----------
 
 #pt=p
@@ -70,7 +82,7 @@ fig.show()
 
 # COMMAND ----------
 
-pt=p
+#pt=p
 
 # COMMAND ----------
 
@@ -95,4 +107,8 @@ fig.show()
 
 # COMMAND ----------
 
-pt.size
+
+
+# COMMAND ----------
+
+
