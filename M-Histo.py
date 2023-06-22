@@ -10,11 +10,6 @@
 
 # COMMAND ----------
 
-
-
-
-# COMMAND ----------
-
 # MAGIC %python
 # MAGIC
 # MAGIC from pyspark.sql.functions import col, expr, max
@@ -23,16 +18,15 @@
 # MAGIC sensor_df = spark.readStream.format("delta").table("demo_frank.motion.sensor")
 # MAGIC
 # MAGIC # Define the window duration
-# MAGIC window_duration = "10 minutes"
+# MAGIC # window_duration = "10 minutes"
 # MAGIC
 # MAGIC # Apply the filter and aggregation
 # MAGIC df = sensor_df \
-# MAGIC     .filter(col("time") >= (col("current_timestamp") - expr(f"INTERVAL {window_duration}"))) \
 # MAGIC     .groupBy("device") \
 # MAGIC     .agg(max("magn").alias("max_magn"))
 # MAGIC
 # MAGIC
-# MAGIC
+# MAGIC # .filter(col("time") >= (col("current_timestamp") - expr(f"INTERVAL {window_duration}"))) \
 
 # COMMAND ----------
 

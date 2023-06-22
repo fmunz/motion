@@ -6,9 +6,9 @@
 
 # MAGIC %md 
 # MAGIC ## Streaming IoT Data
-# MAGIC * [DLT Pipeline](https://data-ai-lakehouse.cloud.databricks.com/)
-# MAGIC * [Realtime Data Analytics](https://data-ai-lakehouse.cloud.databricks.com/)
-# MAGIC * [Self link to repo](https://corona-datenspende.de/)
+# MAGIC * [DLT Pipeline](https://data-ai-lakehouse.cloud.databricks.com/?o=2847375137997282#joblist/pipelines/b7144aa9-b6c6-4e56-9300-e86ea7a542cd/updates/7bef333d-4d49-4ba8-89d6-da83c9b63cfd)
+# MAGIC * [Realtime Data Analytics with SSS](https://data-ai-lakehouse.cloud.databricks.com/?o=2847375137997282#notebook/2284724766303631/command/2748961082439221)
+# MAGIC * [Self link to repo](https://data-ai-lakehouse.cloud.databricks.com/browse/folders/2234705129664752?o=2847375137997282)
 
 # COMMAND ----------
 
@@ -19,7 +19,7 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Ingest a raw event stream from AWS Kinesis 
+# MAGIC ## raw_stream: Ingest a raw event stream from AWS Kinesis 
 # MAGIC Talking points: 
 # MAGIC * Spark Structured Streaming: similarity between reading stream or batch data
 # MAGIC * SSS [project Lightspeed](https://www.databricks.com/blog/2022/06/28/project-lightspeed-faster-and-simpler-stream-processing-with-apache-spark.html)
@@ -55,12 +55,7 @@ myStream = (spark.readStream
 reset = "True"
 pasync = "True"
 
-@dlt.table(comment="data ingested from kinesis stream",
-           table_properties=
-           {"pipelines.reset.allowed":reset,
-            "asyncProgressTrackingEnabled":pasync},
-           temporary=True
-          )
+@dlt.create_view(comment="data ingested from kinesis stream")
 def raw_stream():
   return myStream
     
@@ -68,13 +63,13 @@ def raw_stream():
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Enhanced FanOut(EFO) with Kinesis? read this blog...
+# MAGIC ###Enhanced FanOut(EFO) with Kinesis? read this blog...
 # MAGIC [Check out this blog on Databricks](https://www.databricks.com/blog/2023/01/31/announcing-support-enhanced-fan-out-kinesis-databricks.html)
 
 # COMMAND ----------
 
 # MAGIC %md 
-# MAGIC ## Schema Handling in Spark with Kinesis
+# MAGIC ### Schema Handling in Spark with Kinesis
 # MAGIC
 # MAGIC we have to define the schema to get the payload from the AWS Kinesis stream
 # MAGIC
@@ -95,16 +90,13 @@ motion_schema = StructType([ \
 # COMMAND ----------
 
 # MAGIC %md 
-# MAGIC ### Using DLT with Python
+# MAGIC ### events: with applied schema
 # MAGIC use the schema from above to decode JSON from the Kinesis stream
 
 # COMMAND ----------
 
 # temporary table = alias (visible in pipeline but not in data browser, cannot be queried interactively)
-@dlt.table(comment="data from kinesis payload",
-          table_properties={"pipelines.reset.allowed": reset, "asyncProgressTrackingEnabled": pasync},
-          temporary=True)
-
+@dlt.create_view(comment="data from kinesis payload")
 def events():
   return (
     # no automatic schema inference
@@ -118,7 +110,7 @@ def events():
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC Silver Table, cleansed
+# MAGIC ## sensor: Streaming Table with proper data
 
 # COMMAND ----------
 
@@ -132,6 +124,11 @@ def sensor(temporary=False):
     
   )
 
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## global_stat: Stats table
 
 # COMMAND ----------
 
