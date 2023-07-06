@@ -1,11 +1,12 @@
 ![Arch](img/data-pipeline2.png)
 # motion
 Distributed Seismograph. DAIS 2023 demo to analyze IoT events from more than 130 mobile phone accelerometers in a streaming data pipeline.
-**Note that this is not a canned demo**. To enjoy it, you have to be able to provision a Kinesis stream, a publicly accessible S3 bucket and an AWS Inkognito pool.
+**Note that this is not a canned demo**. To enjoy it, you have to be able to provision a Kinesis stream, a publicly accessible S3 bucket, and an AWS Inkognito pool. 
 
 ## Background Story
 
-In this live demo from [DAIS 2023 (DAIS 2023)](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action/), I show how to use serverless Databricks Delta Live Tables (DLT), Workflows, SQL for data ingestion, cleansing, and transformation. Even in the demo setup, I process for 51 million events per day.
+In this live demo from [DAIS 2023 (DAIS 2023)](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action/). In the demo I show how to use serverless Databricks Delta Live Tables (DLT), Workflows, SQL for data ingestion, cleansing, and transformation. Even with the smallish demo setup, I could process 51 million events per day.
+
 ## Architecture 
 
 ![Arch](img/archdiagram.png)
@@ -14,12 +15,12 @@ You can get this [Excalidraw architecture diagram from here](motion.excalidraw).
 ## Notebooks 📔 
 
 * `M-DataPipeline DLT`: Streaming data pipeline with DLT, reading data from AWS Kinesis
-* `M-Histo`: Streaming histo over client-id and max(magn)
+* `M-Histo`: Streaming histogram over client-id and max(magn)
 * `M-Magn SSS`: Streaming real-time data analytics with Spark Structured Streaming
-* `M-Heatmap`: Streaming real-time data analytics with Spark Structured Streaming used from Workflow
-* `M-Plot`: 3D plot with plotly
+* `M-Heatmap`: Plotly heat map used from Workflow
+* `M-Plot`: 3D plot with Plotly
 * `DeltaSharing_DAIS2023`: Google Colab Notebook for Delta Sharing
-* `M-Plot`: 3D plot with plotly
+* `M-Plot`: 3D plot with Plotly
 
 
 ## Setup
@@ -33,12 +34,15 @@ Use [Databricks Repos](https://docs.databricks.com/repos/index.html#clone-a-remo
 
 ### 🚀 Running the demo 
 * Set up a Kinesis stream and note the ARN. 
-* Create an AWS identity pool with Incognito for the SPA (magn.html). Allow kinesis put with the ARN from above for everyone. 
+* Create an AWS identity pool with Incognito for the SPA (magn.html). Allow kinesis put operations with the ARN from above for everyone. 
 * Edit the SPA and replace the Kinesis stream name and the Incognito pool ID. 
 * Place the SPA in an S3 bucket and make it publicly accessible. Make sure you can access it from a mobile device. 
-
 * Run DLT pipeline in continuous mode.
 * Run the notebooks for the client ID histogram and in another tab the streaming data analytics notebook for the averaged max live display.
+
+### Not running this demo
+
+If you feel less experimental, we also provide a lot of canned demos that can be run with a simple `pip install` or even without a Databricks account in the [Databricks Demo Center](databricks.com/demos) 
 
 
 ## Resources
