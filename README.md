@@ -5,7 +5,7 @@ Distributed Seismograph. DAIS 2023 demo to analyze IoT events from more than 130
 
 ## Background Story
 
-In this live demo from [DAIS 2023 (DAIS 2023)](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action/). In the demo I show how to use serverless Databricks Delta Live Tables (DLT), Workflows, SQL for data ingestion, cleansing, and transformation. Even with the smallish demo setup, I could process 51 million events per day.
+In this live demo from [DAIS 2023](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action/). In the demo I show how to use serverless Databricks Delta Live Tables (DLT), Workflows, SQL for data ingestion, cleansing, and transformation. Even with the smallish demo setup, I could process 51 million events per day.
 
 ## Architecture 
 
