@@ -1,11 +1,11 @@
 ![Arch](img/data-pipeline2.png)
-# motion
-Distributed Seismograph. DAIS 2023 demo to analyze IoT events from more than 130 mobile phone accelerometers in a streaming data pipeline.
+# Distributed Seismograph
+DAIS 2023 demo to analyze IoT events from more than 130 mobile phone accelerometers with a streaming data pipeline.
 **Note that this is not a canned demo**. To enjoy it, you have to be able to provision a Kinesis stream, a publicly accessible S3 bucket, and an AWS Inkognito pool. 
 
 ## Background Story
 
-In this live demo from [DAIS 2023](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action/). In the demo I show how to use serverless Databricks Delta Live Tables (DLT), Workflows, SQL for data ingestion, cleansing, and transformation. Even with the smallish demo setup, I could process 51 million events per day.
+This demo from [DAIS 2023](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action/) uses Databricks Delta Live Tables (DLT), Workflows with serverless compute, Databricks SQL serverless. Even with the smallish demo setup a throughput of 51 million events/day was supported. 
 
 ## Architecture 
 
