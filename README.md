@@ -45,6 +45,7 @@ Use [Databricks Repos](https://docs.databricks.com/repos/index.html#clone-a-remo
 When running this demo at DAIS, some attendees achieved a magnitude of over 200 (on a non-calibrated scale). 
 ![Arch](img/histo.png)
 
+I used Delta Sharing (see notebook above) to read these results with a Colab notebook. 
 
 ### Not running this demo
 
@@ -60,5 +61,5 @@ If you feel less experimental, we also provide a lot of canned demos that can be
 * Follow me on twitter for more Data and AI: [@frankmunz](https://twitter.com/frankmunz). 
 
 
-![Arch](img/data-pipeline2.png)
+![Arch](img/data-magn.png)
 
