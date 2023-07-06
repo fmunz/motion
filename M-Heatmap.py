@@ -22,7 +22,7 @@ import pandas as pd
 df = spark.read.format("delta").table("demo_frank.motion.sensor")
 pt = df.toPandas()
 
-# make device ids smaller 
+# make device ids shorter  
 pt['device'] = pt['device'].str[-3:]
 
 pt.columns
@@ -39,51 +39,8 @@ pt.columns
 #print(f"Size rebinned: {pt.shape} vs size before: {p.shape}")
 print(f"first timestamp found:    {pt['time'].min()}") 
 print(f"last timestamp found:     {pt['time'].max()}")
-print(f"info():                   {pt.info()}")
+print(f"info():                   {pt.info}")
 
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ### resample to x seconds timed windows
-# MAGIC
-
-# COMMAND ----------
-
-# generate more test data...
-
-
-import pandas as pd
-import numpy as np
-import random
-import string
-
-# Function to generate a random string of fixed length
-def get_random_string(length):
-    return ''.join(random.choice(string.ascii_letters) for _ in range(length))
-
-n = 50  # Number of times to replicate
-new_pt_list = []
-
-for device in pt['device'].unique():
-    device_df = pt[pt['device'] == device]
-    for _ in range(n):
-        new_device_df = device_df.copy()
-        new_device_df['device'] = device + get_random_string(5)
-        new_pt_list.append(new_device_df)
-
-new_pt = pd.concat(new_pt_list)
-
-print(new_pt)
-
-
-# COMMAND ----------
-
-pt=new_pt
-
-# COMMAND ----------
-
-pt['device'].unique().size
 
 # COMMAND ----------
 
@@ -95,21 +52,13 @@ pt['device'].unique().size
 pt.set_index('time', inplace=True)  # Set 'time' as the index
 
 # Resample the DataFrame for each 1-second interval, taking the maximum 'magn' value for each device
-resampled_pt = pt.groupby('device').resample('10S')['magn'].max().fillna(0)
+resampled_pt = pt.groupby('device').resample('2S')['magn'].max().fillna(0)
 
 print(resampled_pt)
 
 # COMMAND ----------
 
 pt= resampled_pt
-
-# COMMAND ----------
-
-
-
-# COMMAND ----------
-
-print(len(pt_pivot.index))
 
 # COMMAND ----------
 
@@ -133,11 +82,7 @@ fig = go.Figure(data=go.Heatmap(
 ))
 
 # warning layout limits the number of devices shown
-fig.update_layout(autosize=True)
-#fig.update_layout(width=1000, height=800) 
+#fig.update_layout(autosize=True)
+fig.update_layout(width=1000, height=800) 
 fig.show()
-
-
-# COMMAND ----------
-
 

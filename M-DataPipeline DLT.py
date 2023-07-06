@@ -117,7 +117,7 @@ def events():
 @dlt.table(table_properties={"pipelines.reset.allowed": reset})
 @dlt.expect_or_drop("device is set", "device IS NOT NULL")
 
-def sensor(temporary=False):
+def sensor():
   return (
     dlt.read_stream("events")
     .select("device", "time", "magnitude").withColumnRenamed("magnitude", "magn") 
