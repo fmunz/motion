@@ -45,7 +45,8 @@ Use [Databricks Repos](https://docs.databricks.com/repos/index.html#clone-a-remo
 When running this demo at DAIS, some attendees achieved a magnitude of over 200 (on a non-calibrated scale). 
 ![Arch](img/histo.png)
 
-I used Delta Sharing (see notebook above) to read these results with a Colab notebook. 
+I used Delta Sharing to share these results from Databricks workspace running on AWS.
+The results were read on Google Cloud with a Colab notebook as a Pandas data frame without any Databricks workspace installed (see notebook above). 
 
 ### Not running this demo
 
