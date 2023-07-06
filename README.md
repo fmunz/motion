@@ -40,9 +40,15 @@ Use [Databricks Repos](https://docs.databricks.com/repos/index.html#clone-a-remo
 * Run DLT pipeline in continuous mode.
 * Run the notebooks for the client ID histogram and in another tab the streaming data analytics notebook for the averaged max live display.
 
+### Results
+
+When running this demo at DAIS, some attendees achieved a magnitude of over 200 (on a non-calibrated scale). 
+![Arch](img/histo.png)
+
+
 ### Not running this demo
 
-If you feel less experimental, we also provide a lot of canned demos that can be run with a simple `pip install` or even without a Databricks account in the [Databricks Demo Center](databricks.com/demos) 
+If you feel less experimental, we also provide a lot of canned demos that can be run with a simple `pip install` or even without a Databricks account in the [Databricks Demo Center](https://databricks.com/demos) 
 
 
 ## Resources
@@ -52,3 +58,7 @@ If you feel less experimental, we also provide a lot of canned demos that can be
 * Blog: [Low Latency Streaming Data Pipelines with Kafka and DLT](https://www.databricks.com/blog/2022/08/09/low-latency-streaming-data-pipelines-with-delta-live-tables-and-apache-kafka.html)
 * This demo is provided "as is". Please join the [Databricks Community Forum](https://community.databricks.com/) for technical questions and discussions
 * Follow me on twitter for more Data and AI: [@frankmunz](https://twitter.com/frankmunz). 
+
+
+![Arch](img/data-pipeline2.png)
+
