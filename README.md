@@ -1,6 +1,6 @@
 ![Arch](img/data-pipeline2.png)
 # Distributed Seismograph
-Exec Summary: A [DAIS 2023 demo](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action) to analyze IoT events from hundreds of mobile phone accelerometers with all serverless infrastructure for streaming data pipelines, orchestration, real-time visualization, and data sharing. 
+A [DAIS 2023 data streaming demo](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action) to analyze real IoT events from hundreds of mobile phone accelerometers with an all serverless infrastructure for streaming data pipelines, orchestration, real-time visualization, and data sharing. 
 
 
 ## Background Story
