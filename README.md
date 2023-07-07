@@ -1,11 +1,13 @@
 ![Arch](img/data-pipeline2.png)
 # Distributed Seismograph
 Exec Summary: A [DAIS 2023 demo](https://www.databricks.com/dataaisummit/session/embracing-future-data-engineering-serverless-real-time-lakehouse-action) to analyze IoT events from hundreds of mobile phone accelerometers with all serverless infrastructure for streaming data pipelines, orchestration, real-time visualization, and data sharing. 
-**Note, this is not a canned demo**. To deploy it and enjoy it, you have to be able to provision a Kinesis stream, a publicly accessible S3 bucket, and an AWS Inkognito pool. If you feel less adventurous, we provide many canned demos that can be run with a simple `pip install` or even without a Databricks account in the [Databricks Demo Center](https://databricks.com/demos)  
+
 
 ## Background Story
 
 This DAIS demo uses Databricks Delta Live Tables (DLT), Workflows with serverless compute, Databricks SQL serverless. Even with the smallish demo setup at DAIS and WIFI only a sustained throughput of 51 million events/day was supported. 
+
+**Note, this is not a canned demo**. To deploy it and enjoy it, you have to be able to provision a Kinesis stream, a publicly accessible S3 bucket, and an AWS Inkognito pool. If you feel less adventurous, we provide many canned demos that can be run with a simple `pip install` or even without a Databricks account in the [Databricks Demo Center](https://databricks.com/demos)  
 
 ## Architecture 
 
