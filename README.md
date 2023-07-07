@@ -12,7 +12,7 @@ This DAIS demo uses Databricks Delta Live Tables (DLT), Workflows with serverles
 ## Architecture 
 
 ![Arch](img/archdiagram.png)
-arch diagram [available here](motion.excalidraw). 
+(arch diagram [available here](motion.excalidraw))
 
 ## Notebooks 📔 
 
