@@ -28,26 +28,26 @@ This DAIS demo uses Databricks Delta Live Tables (DLT), Workflows with serverles
 ## Setup
 
 ### DBR Version
-Workflows and SQL are serverless. For SSS DBR 13.1 is used.
+Workflows and SQL are serverless. For Spark Structured Streaming and the analytic notebooks a shared cluster running DBR 13.1 was used.
 ## How to Run the Demo 🚀 ?
 ### 🐑 Clone the Repo
 Use [Databricks Repos](https://docs.databricks.com/repos/index.html#clone-a-remote-git-repository) from your Databricks workspace to clone the repo and kick off the demo. The repo consists of the notebooks listed above. The workflow definition and the serverless SPA is not part of the repo.
 
 
 ### 🚀 Running the demo 
-* Set up a Kinesis stream and note the ARN. 
+* Set up a Kinesis stream using the AWS console or cloud formation and note the ARN. 
 * Create an AWS identity pool with Incognito for the SPA (magn.html). Allow kinesis put operations with the ARN from above for everyone. 
 * Edit the SPA and replace the Kinesis stream name and the Incognito pool ID. 
-* Place the SPA in an S3 bucket and make it publicly accessible. Make sure you can access it from a mobile device. 
-* Run DLT pipeline in continuous mode.
+* Put the SPA in an S3 bucket and make it publicly accessible. Make sure you can access it from a mobile device. 
+* Configure the DLT pipelines to use the proper AWS keys and Kinesis stream, then run provided DLT pipeline in continuous mode.
 * Run the notebooks for the client ID histogram and in another tab the streaming data analytics notebook for the averaged max live display.
 
 ### Results
 
-When running this demo at DAIS, some attendees achieved a magnitude of over 200 (on a non-calibrated scale). 
+When we were running this demo at DAIS, some attendees achieved a magnitude of over 200 (on a non-calibrated scale). 
 ![Arch](img/histo.png)
 
-I used Delta Sharing to share these results from Databricks workspace running on AWS.
+I used Delta Sharing to share these results from a Databricks workspace running on AWS.
 The results were read on Google Cloud with a Colab notebook as a Pandas data frame without any Databricks workspace installed (see notebook above). 
 
 
